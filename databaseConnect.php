@@ -1,5 +1,5 @@
 <?php 
  
- $con = mysqli_connect("localhost","root","","sohan") or die("Couldn't connect");
+ $con = mysqli_connect("localhost","root","","school_management_system") or die("Couldn't connect");
 
 ?>
