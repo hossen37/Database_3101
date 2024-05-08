@@ -20,11 +20,11 @@
                 $email = mysqli_real_escape_string($con,$_POST['email']);
                 $password = mysqli_real_escape_string($con,$_POST['password']);
 
-                $result = mysqli_query($con,"SELECT * FROM users WHERE Email='$email' AND Password='$password' ") or die("Select Error");
+                $result = mysqli_query($con,"SELECT * FROM users WHERE email='$email' AND Password='$password' ") or die("Select Error");
                 $row = mysqli_fetch_assoc($result);
 
                 if(is_array($row) && !empty($row)){
-                    $_SESSION['valid'] = $row['Email'];
+                    $_SESSION['valid'] = $row['email'];
                     $_SESSION['username'] = $row['Username'];
                     $_SESSION['age'] = $row['Age'];
                     $_SESSION['id'] = $row['Id'];
@@ -36,15 +36,15 @@
          
                 }
                 if(isset($_SESSION['valid'])){
-                    echo '<h1>WELCOME</h1></br>';
-                    echo '<h2>Database connected</h2>';
+                    header("location: home.php");
+                  
                     
                 }
               }else{
 
             
             ?>
-            <header><h2>Login</h2></header>
+            <header class="logintxt"><h2>Login</h2></header>
             <form action="" method="post">
                 <div class="field input">
                     <label for="email">Email</label>
@@ -54,8 +54,7 @@
                 <div class="field input">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" autocomplete="off" required>
-                </div>
-
+                
                 <div class="field">
                     
                     <input type="submit" class="btn" name="submit" value="Login" required>
